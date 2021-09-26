@@ -17,37 +17,4 @@ function fish_greeting
                        (UU)'(set_color normal)
 
         echo \n
-        set -l start (date -j -f "%b %d %Y %H:%M:%S" "Aug 31 2021 08:00:00" +%s)
-        set -l now (date +%s)
-        set -l days (math round"(($now-$start)/86400)")
-        set -l line3 (printf '%i days no 🍺' $days)\n
-        echo $line3
-
-    if not set -q fish_greeting
-        set -l start (date -j -f "%b %d %Y %H:%M:%S" "Sep 1 2021 08:00:00" +%s)
-        set -l now (date +%s)
-        set -l days (math round"(($now-$start)/86400)")
-
-        set -l line1 \n(_ '🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟')\n
-        set -l line2 (_ '🐟                        🐟')\n
-        set -l line3 (printf '🐟   %i without beer 🍺   🐟' $days)\n
-        set -l line4 (_ '🐟                        🐟')\n
-        set -l line5 (_ '🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟')\n
-
-        set -g fish_greeting "$line1$line2$line3$line4$line5"
-    end
-
-    if set -q fish_private_mode
-        set -l line (_ "fish is running in private mode, history will not be persisted.")
-        if set -q fish_greeting[1]
-            set -g fish_greeting $fish_greeting\n$line
-        else
-            set -g fish_greeting $line
-        end
-    end
-
-    # The greeting used to be skipped when fish_greeting was empty (not just undefined)
-    # Keep it that way to not print superfluous newlines on old configuration
-    test -n "$fish_greeting"
-    and echo $fish_greeting
 end

@@ -21,4 +21,5 @@ function fish_greeting
         set -l now (date --utc +%s)
         set -l days (math round"(($now-$start)/86400)")
         set -l line3 (printf '%i days no 🍺' $days)\n
+        echo $line3
 end
